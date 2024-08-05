@@ -1,0 +1,57 @@
+#colors {
+    float: right;
+    width: 400px;
+    height: 400px;
+}
+
+.center {
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+h1 {
+    font-size: 1em;
+}
+
+h2 {
+    font-size: 0.75em;
+}
+
+h4 {
+    font-size: 0.75em;
+}
+
+.align-left {
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.align-right {
+    margin: auto;
+    padding: 10px;
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.start-button {
+    font-size: 2em;
+    border-radius: 20px;
+    padding: 5px;
+    border: 2px solid crimson;
+}
+
+.time-skip-button {
+    font-size: 2em;
+    border-radius: 20px;
+    padding: 5px;
+    border: 2px solid purple;
+}
