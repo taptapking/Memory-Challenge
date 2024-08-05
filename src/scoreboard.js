@@ -22,15 +22,14 @@ function ScoreBoard(props) {
             'border-radius': '20px',
             padding: '5px',
             border: '2px solid blue',
-            color: ((parseInt(props.info.time) <= 1000) && (parseInt(props.info.time) % 2 === 0)) && "#DC143C",
             borderColor: ((parseInt(props.info.time) <= 1000) && (parseInt(props.info.time) % 2 === 0)) && "#DC143C",
             display: (props.info.gameStarted === 0) && "none"
         }}>
             <tr>
-                <td style={{ 'text-align': 'left', width: '33%' }}>
+                <td style={{ 'text-align': 'left', width: '33%', color: (!((parseInt(props.info.flash) <= 1000) && (parseInt(props.info.flash) % 2 === 0)) && 'black') || (((parseInt(props.info.flash) <= 1000) && (parseInt(props.info.flash) % 2 === 0)) && 'red') }}>
                     <p id="p4">Lives left: {props.info.lives}</p>
                 </td>
-                <td style={{ 'text-align': 'center', width: '33%', display: (props.info.observeTime >= 0) && "none" }}>
+                <td style={{ 'text-align': 'center', width: '33%', display: (props.info.observeTime >= 0) && "none", color: ((parseInt(props.info.time) <= 1000) && (parseInt(props.info.time) % 2 === 0)) && "#DC143C" }}>
                     <p id="p3">Time: {msToTime(props.info.time)}</p>
                 </td>
                 <td style={{ 'text-align': 'center', width: '33%', display: (props.info.observeTime < 0) && "none" }}>

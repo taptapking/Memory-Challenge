@@ -47,7 +47,7 @@ function Board_function(props) {
 
     return (
         <div id="board" style={{
-            border: '2px solid black',
+            border: (!((parseInt(props.flash) <= 1000) && (parseInt(props.flash) % 2 === 0)) && '2px solid black') || (((parseInt(props.flash) <= 1000) && (parseInt(props.flash) % 2 === 0)) && '2px solid red'),
             'text-align': 'center',
             padding: '4px',
             margin: '3px 3px 3px 3px',

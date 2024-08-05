@@ -19,6 +19,7 @@ function App() {
     const [countdownSkipped, setCountdownSkipped] = useState(0)
     const [timeElapsed, setTimeElapsed] = useState(0)
     const [gameEnded, setGameEnded] = useState(0)
+    const [flash, setFlash] = useState(-1)
 
     const endGame = useCallback((win) => {
         if (win === 0) {
@@ -78,6 +79,24 @@ function App() {
 
     }, [observeTime, time, gameStarted])
 
+    useEffect(() => {
+        if (flash > -1) {
+            let flashbang = setInterval(() => {
+                if (flash < 0) {
+                    clearInterval(flashbang)
+                }
+                else {
+                    setFlash(flash - 1)
+                }
+            }, 10)
+            return () => {
+                clearInterval(flashbang)
+            }
+        }
+
+    }, [flash])
+
+
     const skipCountdown = () => {
         setObserveTime(0)
         setCountdownSkipped(1)
@@ -117,7 +136,9 @@ function App() {
             }
             else if ((value !== current + 1) && (lives > 1)) {
                 setLives(lives - 1)
-                alert("You misclicked\nYou have " + (lives - 1) + " lives left");
+                setFlash(100)
+                //alert("You misclicked\nYou have " + (lives - 1) + " lives left");
+
             }
             else {
                 //game over
@@ -145,8 +166,8 @@ function App() {
                     </div>
                     :
                     <div>
-                        <ScoreBoard info={{ lives: lives, observeTime: observeTime, current: current, time: time, gameStarted: gameStarted }} />
-                        <Board_function x={width} y={height} countdownSkipped={countdownSkipped} handleClick={handleClick} current={current} />
+                        <ScoreBoard info={{ flash: flash, lives: lives, observeTime: observeTime, current: current, time: time, gameStarted: gameStarted }} />
+                        <Board_function flash={flash} x={width} y={height} countdownSkipped={countdownSkipped} handleClick={handleClick} current={current} />
                         <TimeSkipButton countdownSkipped={countdownSkipped} skipCountdown={skipCountdown} />
                     </div>
             }
