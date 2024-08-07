@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css"
 
 function msToTime(duration1) {
@@ -16,13 +16,61 @@ function msToTime(duration1) {
     return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 }
 function ScoreBoard(props) {
+    const [custom, setCustom] = useState(0)
+    const difficulty = () => {
+        if (custom === 1) return '5px solid black'
+        if ((props.info.width === 2) &&
+            (props.info.height === 2) &&
+            (props.info.lives <= 1) &&
+            (props.info.observeTime <= 1500) &&
+            (props.info.time <= 4500)) {
+            return '5px solid aqua'
+        }
+        if ((props.info.width === 2) &&
+            (props.info.height === 3) &&
+            (props.info.lives <= 2) &&
+            (props.info.observeTime <= 1500) &&
+            (props.info.time <= 4500)) {
+            return '5px solid greenyellow'
+        }
+        if ((props.info.width === 3) &&
+            (props.info.height === 3) &&
+            (props.info.lives <= 2) &&
+            (props.info.observeTime <= 2000) &&
+            (props.info.time <= 4500)) {
+            return '5px solid yellowgreen'
+        }
+        if ((props.info.width === 4) &&
+            (props.info.height === 4) &&
+            (props.info.lives <= 3) &&
+            (props.info.observeTime <= 3000) &&
+            (props.info.time <= 6000)) {
+            return '5px solid yellow'
+        }
+        if ((props.info.width === 5) &&
+            (props.info.height === 5) &&
+            (props.info.lives <= 6) &&
+            (props.info.observeTime <= 4500) &&
+            (props.info.time <= 7500)) {
+            return '5px solid crimson'
+        }
+        if ((props.info.width === 6) &&
+            (props.info.height === 6) &&
+            (props.info.lives <= 10) &&
+            (props.info.observeTime <= 6000) &&
+            (props.info.time <= 9000)) {
+            return '5px solid purple'
+        }
+        setCustom(1)
+        return '5px solid black'
+    }
     return (
         <table id="menu" style={{
             width: '100%',
             'border-radius': '20px',
             padding: '5px',
-            border: '2px solid blue',
-            borderColor: ((parseInt(props.info.time) <= 1000)) && "#DC143C",
+            border: difficulty(),
+            //borderColor: ((parseInt(props.info.time) <= 1000)) && "#DC143C",
             display: (props.info.gameStarted === 0) && "none"
         }}>
             <tr>

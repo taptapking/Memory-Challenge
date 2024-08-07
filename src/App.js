@@ -10,7 +10,7 @@ import Board_function from "./board copy";
 
 function App() {
     const [time, setTime] = useState(45)
-    const [observeTime, setObserveTime] = useState(15)
+    const [observeTime, setObserveTime] = useState(20)
     const [width, setWidth] = useState(3)
     const [height, setHeight] = useState(3)
     const [lives, setLives] = useState(2)
@@ -118,7 +118,7 @@ function App() {
         }
     }
     const handleClick = (value) => {
-        if ((gameEnded === 1) || (countdownSkipped === 0)) {
+        if ((gameEnded === 1) || (countdownSkipped === 0) || (value <= current)) {
             //not allowed to click
         }
         else {
@@ -166,7 +166,7 @@ function App() {
                     </div>
                     :
                     <div>
-                        <ScoreBoard info={{ flash: flash, lives: lives, observeTime: observeTime, current: current, time: time, gameStarted: gameStarted }} />
+                        <ScoreBoard info={{ flash: flash, lives: lives, observeTime: observeTime, current: current, time: time, gameStarted: gameStarted, width: width, height: height }} />
                         <Board_function flash={flash} x={width} y={height} countdownSkipped={countdownSkipped} handleClick={handleClick} current={current} />
                         <TimeSkipButton countdownSkipped={countdownSkipped} skipCountdown={skipCountdown} />
                     </div>
