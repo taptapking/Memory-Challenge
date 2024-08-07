@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Memory-Challenge/static/css/main.99ab7fb7.css",
-    "main.js": "/Memory-Challenge/static/js/main.f20d27bf.js",
+    "main.js": "/Memory-Challenge/static/js/main.f2185e92.js",
     "index.html": "/Memory-Challenge/index.html",
     "main.99ab7fb7.css.map": "/Memory-Challenge/static/css/main.99ab7fb7.css.map",
-    "main.f20d27bf.js.map": "/Memory-Challenge/static/js/main.f20d27bf.js.map"
+    "main.f2185e92.js.map": "/Memory-Challenge/static/js/main.f2185e92.js.map"
   },
   "entrypoints": [
     "static/css/main.99ab7fb7.css",
-    "static/js/main.f20d27bf.js"
+    "static/js/main.f2185e92.js"
   ]
 }
