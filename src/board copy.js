@@ -1,19 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./style.css"
 
 function Board_function(props) {
     const [board1, setBoard] = useState(Array.from({ length: props.x * props.y }, (_, i) => i + 1))
-
-
-    const usePreviousValue = (value) => {
-        const ref = useRef();
-        useEffect(() => {
-            ref.current = value;
-        });
-        return ref.current;
-    }
-    const prevProps_x = usePreviousValue(props.x)
-    const prevProps_y = usePreviousValue(props.y)
 
     const generate = useCallback(() => {
 
@@ -39,10 +28,9 @@ function Board_function(props) {
 
 
     useEffect(() => {
-        if ((prevProps_x !== props.x) || (prevProps_y !== props.y)) {
-            generate(props.x, props.y)
-        }
-    })
+        console.log("new board generated")
+        generate(props.x, props.y)
+    }, [props.x, props.y, generate])
 
 
     return (

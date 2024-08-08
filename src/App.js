@@ -154,22 +154,28 @@ function App() {
         setGameStarted(1)
     }
 
+    const renderGameBoard = () => (
+        <div>
+            <ScoreBoard info={{ flash: flash, lives: lives, observeTime: observeTime, current: current, time: time, gameStarted: gameStarted, width: width, height: height }} />
+            <Board_function flash={flash} x={width} y={height} countdownSkipped={countdownSkipped} handleClick={handleClick} current={current} />
+            <TimeSkipButton countdownSkipped={countdownSkipped} skipCountdown={skipCountdown} />
+        </div>
+    )
+
+    const renderMenu = () => (
+        <div>
+            <HowToPlay />
+            <DifficultySelect handleChange={handleChange} />
+            <DifficultyAdjust width={width} height={height} time={time} observeTime={observeTime} lives={lives} handleChange={handleChange} />
+            <StartButton observe={start} />
+        </div>
+    )
+
+
     return (
         <div className="center">
             {
-                !gameStarted ?
-                    <div>
-                        <HowToPlay />
-                        <DifficultySelect handleChange={handleChange} />
-                        <DifficultyAdjust width={width} height={height} time={time} observeTime={observeTime} lives={lives} handleChange={handleChange} />
-                        <StartButton observe={start} />
-                    </div>
-                    :
-                    <div>
-                        <ScoreBoard info={{ flash: flash, lives: lives, observeTime: observeTime, current: current, time: time, gameStarted: gameStarted, width: width, height: height }} />
-                        <Board_function flash={flash} x={width} y={height} countdownSkipped={countdownSkipped} handleClick={handleClick} current={current} />
-                        <TimeSkipButton countdownSkipped={countdownSkipped} skipCountdown={skipCountdown} />
-                    </div>
+                gameStarted ? renderGameBoard() : renderMenu()
             }
         </div>
     )
