@@ -104,18 +104,16 @@ function App() {
     }
 
     const handleChange = (type, value) => {
-        if (value > 0) {
-            if (type === "width")
-                setWidth(value)
-            if (type === "height")
-                setHeight(value)
-            if (type === "time")
-                setTime(value)
-            if (type === "observeTime")
-                setObserveTime(value)
-            if (type === "lives")
-                setLives(value)
-        }
+        if (type === "width")
+            setWidth(value)
+        if (type === "height")
+            setHeight(value)
+        if (type === "time")
+            setTime(value)
+        if (type === "observeTime")
+            setObserveTime(value)
+        if (type === "lives")
+            setLives(value)
     }
     const handleClick = (value) => {
         if ((gameEnded === 1) || (countdownSkipped === 0) || (value <= current)) {
@@ -149,9 +147,14 @@ function App() {
         }
     }
     const start = () => {
-        setObserveTime(observeTime * 100)
-        setTime(time * 100)
-        setGameStarted(1)
+        if ((width < 1) || (height < 1) || (time < 1) || (observeTime < 1) || (lives < 1)) {
+            alert("Invalid values!")
+        }
+        else {
+            setObserveTime(observeTime * 100)
+            setTime(time * 100)
+            setGameStarted(1)
+        }
     }
 
     const renderGameBoard = () => (
